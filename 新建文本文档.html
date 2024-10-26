@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="file" id="scwj" />
+    <button onclick="xztp()">下载图片</button>
+    <img src="" id="img" alt="暂无" width="50" height="50" />
+    <script>
+      //先把图片上传显示出来
+      var filename = document.getElementById("scwj");
+      var img = document.getElementById("img");
+      filename.onchange = function () {
+        img.src = URL.createObjectURL(this.files[0]);
+      };
+      //加一个a标签，获取图片的流，点download下载就好了
+      function xztp() {
+        var bqa = document.createElement("a");
+        console.log(bqa);
+        bqa.setAttribute("href", URL.createObjectURL(filename.files[0]));
+        bqa.setAttribute("download", filename.name);
+        bqa.click();
+      }
+    </script>
+  </body>
+</html>
